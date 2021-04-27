@@ -4,17 +4,56 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "fix:other": "yarn prettier --write",
+    "fix:code": "yarn test:code --fix",
+    "fix": "yarn fix:code && yarn fix:other",
+    "prettier": "prettier \"**/*.{json,md,scss,yaml,yml}\""
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.1.7",
+    "@types/webpack": "^5.28.0",
+    "classnames": "^2.3.1",
+    "history": "^5.0.0",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^5.2.0",
+    "swiper": "^6.5.8"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react-refresh": "^1.3.1",
+    "autoprefixer": "^10.2.5",
+    "eslint": "7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-prettier": "3.4.0",
+    "husky": "6.0.0",
+    "lint-staged": "10.5.4",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.2.13",
+    "prettier": "2.2.1",
+    "react-app-rewired": "^2.1.8",
+    "react-snap": "^1.23.0",
+    "sass-loader": "^11.0.1",
+    "tailwindcss": "^2.1.2",
     "typescript": "^4.1.2",
     "vite": "^2.2.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix"
+    ],
+    "*.{json,md,scss,yaml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
