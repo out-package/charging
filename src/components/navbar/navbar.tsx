@@ -10,7 +10,7 @@ const navis = ['Trang chủ', 'Sản phẩm', 'Đăng ký hợp tác', 'Giới t
 
 function NavBar(props: NavibarProps) {
   return (
-    <div className="fixed w-screen bg-black bg-opacity-25 h-20">
+    <div className="fixed w-screen bg-black bg-opacity-25 h-20 z-50">
       <div className="mr-auto ml-auto max-w-screen-xl flex flex-row items-center justify-between h-full">
         <img
           referrerPolicy="no-referrer"
