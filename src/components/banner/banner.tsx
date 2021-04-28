@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import React from 'react';
 import pcPoster from '../../assets/images/pc-video-cover.png';
+import mobilePoster from '../../assets/images/mobile-video-cover.png';
 
 export default function Banner() {
   return (
@@ -9,11 +11,20 @@ export default function Banner() {
         loop
         muted
         src="../../assets/videos/pc-video.mp4"
-        className=" object-cover absolute w-screen h-screen z-0"
+        className="object-cover absolute w-screen h-screen z-0 sx:hidden"
         poster={pcPoster}
       />
-      <div className="z-10 relative h-screen items-center justify-center flex">
-        <h1 className="text-6xl text-white text-center leading-snug select-none">
+      <video
+        autoPlay
+        loop
+        muted
+        src="../../assets/videos/mobile-video.mp4"
+        className="object-cover absolute w-screen h-screen z-0 sx:block"
+        poster={mobilePoster}
+      />
+      <div className="z-10 relative h-screen items-center justify-center flex sx:flex-col">
+        <img src="../../assets/images/mobile-logo.png" alt="" className="mb-20" />
+        <h1 className="text-6xl text-white text-center leading-snug select-none sx:text-xl sx:px-8 sx:leading-8">
           Giữ kết nối với thế giới <br /> cho cuộc sống luôn tràn đầy năng lượng
         </h1>
       </div>
