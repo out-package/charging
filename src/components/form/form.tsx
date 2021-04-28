@@ -6,10 +6,10 @@ function Form() {
 
   return (
     <>
-      <div className="h-screen bg-main">
-        <div className="pt-40 text-center text-6xl text-white">Đăng ký hợp tác</div>
-        <div className="pt-28">
-          <div className="flex items-center justify-center pb-20">
+      <div className="h-screen bg-main flex flex-col items-center justify-center">
+        <div className="text-center text-6xl text-white">Đăng ký hợp tác</div>
+        <div className="pt-28 lg:pt-14">
+          <div className="flex items-center justify-center pb-20 lg:pb-12">
             <label htmlFor="Tên" className="w-56 text-white text-opacity-80 text-base">
               Tên đơn vị kinh doanh
             </label>
@@ -19,7 +19,7 @@ function Form() {
               className="outline-none bg-white bg-opacity-10 h-14 w-96 border-white border-solid border-2 border-opacity-20 text-white px-3"
             />
           </div>
-          <div className="flex items-center justify-center pb-20">
+          <div className="flex items-center justify-center pb-20 lg:pb-12">
             <label htmlFor="THọ" className="w-56 text-white text-opacity-80 text-base">
               THọ tên
             </label>
@@ -29,7 +29,7 @@ function Form() {
               className="outline-none bg-white bg-opacity-10 h-14 w-96 border-white border-solid border-2 border-opacity-20 text-white px-3"
             />
           </div>
-          <div className="flex items-center justify-center pb-20">
+          <div className="flex items-center justify-center pb-20 lg:pb-12">
             <label htmlFor="Điện" className="w-56 text-white text-opacity-80 text-base">
               Điện thoại
             </label>
@@ -39,7 +39,7 @@ function Form() {
               className="outline-none bg-white bg-opacity-10 h-14 w-96 border-white border-solid border-2 border-opacity-20 text-white px-3"
             />
           </div>
-          <div className="flex items-center justify-center pb-20">
+          <div className="flex items-center justify-center pb-20 lg:pb-12">
             <label htmlFor="Địa" className="w-56 text-white text-opacity-80 text-base">
               Địa chỉ
             </label>

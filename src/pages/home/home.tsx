@@ -4,7 +4,7 @@ import Footer from '@/components/footer/footer';
 import Form from '@/components/form/form';
 import NavBar from '@/components/navbar/navbar';
 import Product from '@/components/product/product';
-import React, {useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SwiperCore, {Pagination, Mousewheel} from 'swiper/core';
 
@@ -65,6 +65,24 @@ function changeBullet(currentIndex: number) {
 function Home() {
   const ref = useRef<SwiperCore | null>(null);
   const [navBarIndex, setNavBarIndex] = useState(0);
+  const [height, setHeight] = useState(window.innerHeight);
+
+  const updateSnapGrid = useCallback(swiper => {
+    const lastscreen = document.getElementById('last-screen');
+    const lastGrid = window.innerHeight * 3 - (window.innerHeight - (lastscreen?.offsetHeight ?? 0));
+    swiper.snapGrid.splice(swiper.snapGrid.length - 1, 1, lastGrid);
+  }, []);
+
+  const onResize = () => {
+    setHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   return (
     <div className="h-screen overflow-y-hidden overflow-x-hidden">
@@ -80,7 +98,7 @@ function Home() {
         mousewheel={{forceToAxis: true}}
         direction="vertical"
         spaceBetween={0}
-        height={window.innerHeight}
+        height={height}
         simulateTouch={false}
         slidesPerView={1}
         pagination={{
@@ -96,17 +114,19 @@ function Home() {
         onSlideChange={swiper => {
           resetBullet();
           changeBullet(swiper.activeIndex);
+          setNavBarIndex(swiper.activeIndex);
         }}
         onInit={swiper => {
           ref.current = swiper;
         }}
         onUpdate={(swiper: any) => {
-          const lastscreen = document.getElementById('last-screen');
-          const lastGrid = window.innerHeight * 3 - (window.innerHeight - (lastscreen?.offsetHeight ?? 0));
-          swiper.snapGrid.splice(swiper.snapGrid.length - 1, 1, lastGrid);
+          updateSnapGrid(swiper);
+        }}
+        onResize={(swiper: any) => {
+          updateSnapGrid(swiper);
         }}
       >
-        <SwiperSlide>
+        <SwiperSlide id="first-swiper-slide">
           <Banner />
         </SwiperSlide>
         <SwiperSlide>
