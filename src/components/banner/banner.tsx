@@ -1,4 +1,5 @@
 import React from 'react';
+import pcPoster from '../../assets/images/pc-video-cover.png';
 
 export default function Banner() {
   return (
@@ -9,6 +10,7 @@ export default function Banner() {
         muted
         src="../../assets/videos/pc-video.mp4"
         className=" object-cover absolute w-screen h-screen z-0"
+        poster={pcPoster}
       />
       <div className="z-10 relative h-screen items-center justify-center flex">
         <h1 className="text-6xl text-white text-center leading-snug select-none">
