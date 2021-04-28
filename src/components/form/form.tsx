@@ -49,12 +49,15 @@ function Form() {
               className="outline-none bg-white bg-opacity-10 h-14 w-96 border-white border-solid border-2 border-opacity-20 text-white px-3 sx:w-48 sx:h-7"
             />
           </div>
-          <button
-            className="text-main text-base text-center h-14 leading-none bg-white mx-auto block w-52 outline-none focus:outline-none sx:h-8 sx:w-32 sx:mt-4"
-            onClick={() => setShowDialog(true)}
-          >
-            Gửi yêu cầu
-          </button>
+          <div className="flex pb-20 lg:pb-12 sx:pb-6">
+            <div className="w-56 text-white text-opacity-80 text-base sx:w-28 sx:pr-5 sx:text-xs"></div>
+            <button
+              className="text-main text-base text-center h-14 leading-none bg-white block w-52 outline-none focus:outline-none sx:h-8 sx:w-32 sx:mt-4"
+              onClick={() => setShowDialog(true)}
+            >
+              Gửi yêu cầu
+            </button>
+          </div>
         </div>
       </div>
       <Dialog
@@ -64,13 +67,13 @@ function Form() {
         onClose={() => setShowDialog(false)}
         forceRender
         wrapClassName="flex"
-        className="m-auto w-1/2"
+        className="m-auto w-1/2 sx:w-4/5"
       >
-        <div className="pb-16">
-          <p className="h-64 text-center px-20 text-4xl text-black flex items-center justify-center">
+        <div className="pb-16 sx:pb-6">
+          <p className="h-64 text-center px-20 text-4xl text-black flex items-center justify-center sx:text-xs sx:px-2 sx:h-auto sx:py-12">
             Gửi yêu cầu thành công, quý vị vui lòng chờ trong ít phút sẽ có chuyên viên liên hệ.
           </p>
-          <button className="bg-main outline-none focus:outline-none px-16 h-14 text-base text-white mx-auto block">
+          <button className="bg-main outline-none focus:outline-none px-16 h-14 text-base text-white mx-auto block sx:h-8 sx:px-8 sx:text-sm">
             Xác nhận
           </button>
         </div>

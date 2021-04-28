@@ -17,7 +17,7 @@ function NavBar(props: NavibarProps) {
         'bg-opacity-25': !mobileOpened,
       })}
     >
-      <div className="mr-auto ml-auto max-w-screen-xl flex flex-row items-center justify-between h-full sx:hidden">
+      <div className="mr-auto ml-auto max-w-screen-mxl flex flex-row items-center justify-between h-full sx:hidden">
         <img
           referrerPolicy="no-referrer"
           src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng319942caccf9897f411fceab21731ee29eed11f6cc8c2a778beb05ab81580ec0"

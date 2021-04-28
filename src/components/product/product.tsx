@@ -69,7 +69,11 @@ function Product() {
                 </div>
               </div>
               <div className="sx:order-1">
-                <img className="sx:w-44 sx:mb-6" referrerPolicy="no-referrer" src="../../assets/images/product1.png" />
+                <img
+                  className="sx:w-44 sx:mb-6 sx:h-44 sx:object-contain"
+                  referrerPolicy="no-referrer"
+                  src="../../assets/images/product1.png"
+                />
               </div>
             </div>
           </SwiperSlide>
@@ -118,7 +122,11 @@ function Product() {
                 </div>
               </div>
               <div className="sx:order-1">
-                <img className="sx:w-44 sx:mb-6" referrerPolicy="no-referrer" src="../../assets/images/product2.png" />
+                <img
+                  className="sx:w-44 sx:mb-6 sx:h-44 sx:object-contain"
+                  referrerPolicy="no-referrer"
+                  src="../../assets/images/product2.png"
+                />
               </div>
             </div>
           </SwiperSlide>

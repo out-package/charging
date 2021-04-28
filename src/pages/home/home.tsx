@@ -11,9 +11,7 @@ import SwiperCore, {Pagination, Mousewheel} from 'swiper/core';
 SwiperCore.use([Mousewheel, Pagination]);
 
 function resetBullet() {
-  const bullets = document.querySelectorAll(
-    '.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet',
-  );
+  const bullets = document.querySelectorAll('.main-swiper-pagination .swiper-pagination-bullet');
 
   bullets.forEach(el => {
     const classList = Array.from(el.classList);
@@ -42,12 +40,8 @@ function resetBullet() {
 }
 
 function changeBullet(currentIndex: number) {
-  const bullets = document.querySelectorAll(
-    '.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet',
-  );
-  const activeBullet = document.querySelector(
-    '.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet-active',
-  );
+  const bullets = document.querySelectorAll('.main-swiper-pagination .swiper-pagination-bullet');
+  const activeBullet = document.querySelector('.main-swiper-pagination .swiper-pagination-bullet-active');
 
   if (currentIndex % 2 === 0) {
     // 深色模式
@@ -94,7 +88,7 @@ function Home() {
         }}
       />
       <Swiper
-        speed={300}
+        speed={600}
         mousewheel={{forceToAxis: true}}
         direction="vertical"
         spaceBetween={0}
@@ -102,14 +96,10 @@ function Home() {
         simulateTouch={false}
         slidesPerView={1}
         pagination={{
+          el: '.main-swiper-pagination',
           clickable: true,
           bulletActiveClass: 'swiper-pagination-bullet-active w-5 rounded-lg shadow bg-white',
           bulletClass: 'swiper-pagination-bullet bg-opacity-70 bg-gray-50',
-        }}
-        onPaginationRender={(swiper, el) => {
-          el.className = Array.from(el.classList)
-            .concat('fixed', '!px-4', 'flex-col', 'items-center', 'flex', 'justify-center')
-            .join(' ');
         }}
         onSlideChange={swiper => {
           resetBullet();
@@ -142,9 +132,13 @@ function Home() {
           </div>
         </SwiperSlide>
       </Swiper>
+      <div className="main-swiper-pagination swiper-pagination right-3 top-1/2 transform -translate-y-1/2 flex flex-col justify-center items-center space-y-2 sx:right-1 sx:px-1"></div>
     </div>
   );
 }
 
 export default Home;
 export const path = '/';
+//     right: 10px;
+// top: 50%;
+// transform: translate3d(0px,-50%,0);
