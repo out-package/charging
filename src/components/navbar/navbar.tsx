@@ -13,7 +13,7 @@ function NavBar(props: NavibarProps) {
 
   return (
     <div
-      className={classNames('fixed w-screen bg-black h-20 z-50 shadow', {
+      className={classNames('fixed w-screen bg-black h-20 z-50 shadow sx:h-16 sx:shadow-none', {
         'bg-opacity-25': !mobileOpened,
       })}
     >
