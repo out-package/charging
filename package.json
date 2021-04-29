@@ -11,18 +11,19 @@
     "prettier": "prettier \"**/*.{json,md,scss,yaml,yml}\""
   },
   "dependencies": {
-    "@types/react-router-dom": "^5.1.7",
     "@types/webpack": "^5.28.0",
     "classnames": "^2.3.1",
-    "history": "^5.0.0",
+    "history": "4.10.0",
     "rc-dialog": "^8.5.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "5.2.0",
     "swiper": "^6.5.8"
   },
   "devDependencies": {
+    "@types/react-router-dom": "5.1.5",
+    "@types/history": "4.7.6",
     "@babel/core": "^7.13.16",
     "@babel/generator": "^7.13.16",
     "@babel/parser": "^7.13.16",

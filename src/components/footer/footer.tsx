@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
   return (
     <div className="h-72 bg-black bg-opacity-90 sx:h-auto sx:py-10">
-      <div className="max-w-screen-xl mx-auto text-white flex justify-between items-center h-full text-base sx:flex-col sx:justify-center sx:text-center">
+      <div className="mx-auto text-white flex justify-between items-center h-full text-base sx:flex-col sx:justify-center sx:text-center max-w-screen-mxl px-9 sx:px-0">
         <div className="sx:pb-8">
           <div className="text-white pb-7 sx:pb-2">Hợp tác thương mại</div>
           <p className="text-white text-opacity-30">support@moda.cc</p>

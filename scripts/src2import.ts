@@ -10,11 +10,9 @@ let imports = [];
 export default function Src2Import() {
   return {
     name: 'src2import',
+
     transform(code: string, path: string) {
       if (!fileRegex.test(path)) {
-        return code;
-      }
-      if (!/\$RefreshReg\$\(/.test(code)) {
         return code;
       }
       const ast = parser.parse(code, {sourceType: 'module'});
