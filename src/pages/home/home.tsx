@@ -79,7 +79,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="h-screen overflow-y-hidden overflow-x-hidden">
+    <div className="h-screen overflow-hidden">
       <NavBar
         activeIndex={navBarIndex}
         onChange={index => {
@@ -89,6 +89,7 @@ function Home() {
       />
       <Swiper
         speed={600}
+        className="overflow-hidden"
         mousewheel={{forceToAxis: true}}
         direction="vertical"
         spaceBetween={0}

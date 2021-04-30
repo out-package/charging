@@ -12,12 +12,8 @@ function NavBar(props: NavibarProps) {
   const [mobileOpened, setMobileOpened] = useState(false);
 
   return (
-    <div
-      className={classNames('fixed w-screen bg-black h-20 z-50 shadow sx:h-16 sx:shadow-none', {
-        'bg-opacity-25': !mobileOpened,
-      })}
-    >
-      <div className="mr-auto ml-auto max-w-screen-mxl flex flex-row items-center justify-between h-full sx:hidden  px-9 sx:px-0">
+    <div className={classNames('fixed w-screen bg-black h-20 z-50 shadow sx:h-16 sx:shadow-none')}>
+      <div className="mx-auto flex flex-row items-center justify-between h-full sx:hidden  px-9 sx:px-0 max-w-6xl">
         <img
           referrerPolicy="no-referrer"
           src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng319942caccf9897f411fceab21731ee29eed11f6cc8c2a778beb05ab81580ec0"
@@ -34,7 +30,7 @@ function NavBar(props: NavibarProps) {
           ))}
         </div>
       </div>
-      <div className="hidden sx:block ml-3.5 mt-6" onClick={() => setMobileOpened(!mobileOpened)}>
+      <div className="hidden sx:block ml-4 mt-6" onClick={() => setMobileOpened(!mobileOpened)}>
         <div
           className={classNames('w-6 h-05 my-1 transition duration-300 bg-white', {
             transform: mobileOpened,
@@ -58,7 +54,7 @@ function NavBar(props: NavibarProps) {
         ></div>
       </div>
       <div
-        className={classNames('fixed left-0 right-0 bottom-0 top-16 bg-black transition duration-300 transform', {
+        className={classNames('fixed left-0 right-0 bottom-0 top-0 mt-16 bg-black transition duration-300 transform', {
           'translate-y-0': mobileOpened,
           'translate-y-full': !mobileOpened,
         })}
@@ -77,7 +73,7 @@ function NavBar(props: NavibarProps) {
               'text-opacity-100': props.activeIndex === index,
               block: true,
               'py-4': true,
-              'mx-3.5': true,
+              'mx-4': true,
               'border-b': true,
               'border-gray-800': true,
               'text-base': true,
