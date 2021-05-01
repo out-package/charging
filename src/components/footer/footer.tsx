@@ -1,8 +1,9 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, {HTMLAttributes} from 'react';
 
-function Footer() {
+function Footer(props: HTMLAttributes<any>) {
   return (
-    <div className="h-72 bg-black bg-opacity-90 sx:h-auto sx:py-10">
+    <div className={classNames('h-72 bg-black bg-opacity-90 sx:h-auto sx:py-10', props.className)}>
       <div className="mx-auto text-white flex justify-between items-center h-full text-base sx:flex-col sx:justify-center sx:text-center max-w-6xl px-9 sx:px-0">
         <div className="sx:pb-8">
           <div className="text-white pb-6 sx:pb-2">Hợp tác thương mại</div>

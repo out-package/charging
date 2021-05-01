@@ -16,7 +16,7 @@ function Form() {
             <input
               type="text"
               id="Tên"
-              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-48 sx:h-7"
+              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-40 sx:h-7"
             />
           </div>
           <div className="flex items-center justify-center pb-20 lg:pb-12 sx:pb-6">
@@ -26,7 +26,7 @@ function Form() {
             <input
               type="text"
               id="THọ"
-              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-48 sx:h-7"
+              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-40 sx:h-7"
             />
           </div>
           <div className="flex items-center justify-center pb-20 lg:pb-12 sx:pb-6">
@@ -36,7 +36,7 @@ function Form() {
             <input
               type="text"
               id="Điện"
-              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-48 sx:h-7"
+              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-40 sx:h-7"
             />
           </div>
           <div className="flex items-center justify-center pb-20 lg:pb-12 sx:pb-6">
@@ -46,7 +46,7 @@ function Form() {
             <input
               type="text"
               id="Địa"
-              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-48 sx:h-7"
+              className="outline-none bg-white bg-opacity-05 py-3 w-96 border-white border-solid border-2 border-opacity-25 text-white px-3 sx:w-40 sx:h-7"
             />
           </div>
           <div className="flex pb-20 lg:pb-12 sx:pb-6">

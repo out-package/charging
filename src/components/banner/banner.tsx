@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import React from 'react';
 import pcPoster from '../../assets/images/pc-video-cover.png';
 import mobilePoster from '../../assets/images/mobile-video-cover.png';
+import {isWeixin} from '@/utils/index';
 
 export default function Banner() {
   return (
@@ -14,14 +14,19 @@ export default function Banner() {
         className="object-cover absolute w-screen h-screen z-0 block sx:hidden"
         poster={pcPoster}
       />
-      <video
-        autoPlay
-        loop
-        muted
-        src="../../assets/videos/mobile-video.mp4"
-        className="object-cover absolute w-screen h-screen z-0 hidden sx:block"
-        poster={mobilePoster}
-      />
+      {isWeixin ? (
+        <img src={mobilePoster} className="w-screen h-screen z-0 sx:block object-cover absolute" />
+      ) : (
+        <video
+          autoPlay
+          loop
+          muted
+          src="../../assets/videos/mobile-video.mp4"
+          className="object-cover absolute w-screen h-screen z-0 hidden sx:block"
+          poster={mobilePoster}
+        />
+      )}
+
       <div className="z-10 relative h-screen items-center justify-center flex sx:flex-col">
         <img src="../../assets/images/mobile-logo.png" alt="" className="mb-20 hidden sx:block" />
         <h1 className="text-6xl text-white text-center leading-snug select-none sx:text-xl sx:px-8 sx:leading-8">
