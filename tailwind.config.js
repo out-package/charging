@@ -69,7 +69,7 @@ module.exports = {
       },
       screens: {
         mxl: '1440px',
-        sx: {min: '320px', max: '639px'},
+        sx: {min: '319px', max: '639px'},
         sm: {min: '640px', max: '767px'},
         md: {min: '768px', max: '1023px'},
         lg: {min: '1024px', max: '1279px'},
@@ -78,6 +78,7 @@ module.exports = {
       },
 
       fontSize: {
+        xss: '0.625rem',
         xs: '0.75rem',
         sm: '0.875rem',
         base: '1rem',

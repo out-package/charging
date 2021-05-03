@@ -16,7 +16,7 @@ function NavBar(props: NavibarProps) {
 
   // 移动端
   const isDefectIndex =
-    window.innerWidth < 768 ||
+    window.innerHeight < 710 ||
     // 低分辨率的 pc
     (os.isPc && window.innerHeight < 920);
 
@@ -72,7 +72,7 @@ function NavBar(props: NavibarProps) {
           })}
         </div>
       </div>
-      <div className="hidden sx:block ml-4 mt-6" onClick={() => setMobileOpened(!mobileOpened)}>
+      <div className="hidden sx:block pl-4 pt-6 float-left" onClick={() => setMobileOpened(!mobileOpened)}>
         <div
           className={classNames('w-6 h-05 my-1 transition duration-300', {
             'bg-main': isDark && !mobileOpened,

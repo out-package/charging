@@ -25,9 +25,9 @@ export default function Src2Import() {
           if (/^\w+:\/\//.test(value)) {
             return;
           }
-          const ident = t.identifier(
-            '___src2import_' + nodePath.basename(value).replace(/\./g, '_').replace(/\-/g, '_'),
-          );
+          const ident = t.identifier('___src2import_' + nodePath.basename(value).replace(/[\.\-\@]/g, '_'));
+
+          console.log('value', value);
 
           if (!imports.some(item => item[1] === value)) {
             imports.push([ident, value]);

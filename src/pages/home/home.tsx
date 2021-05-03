@@ -83,6 +83,3 @@ function Home() {
 
 export default Home;
 export const path = '/';
-//     right: 10px;
-// top: 50%;
-// transform: translate3d(0px,-50%,0);
