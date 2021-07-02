@@ -8,7 +8,7 @@ interface NavibarProps {
   onChange: (activeIndex: number) => void;
 }
 
-const navis = ['Trang chủ', 'Sản phẩm', 'Đăng ký hợp tác', 'Giới thiệu'];
+const navis = ['Trang chủ', 'Sản phẩm', 'Hợp tác'];
 
 function NavBar(props: NavibarProps) {
   const [mobileOpened, setMobileOpened] = useState(false);
@@ -24,16 +24,15 @@ function NavBar(props: NavibarProps) {
     dark.push(3);
   }
 
-  const isDark = dark.includes(props.activeIndex);
 
   return (
     <div
-      className={classNames('fixed w-screen h-20 z-50 sx:h-16', {
+      className={classNames('fixed w-screen h-32 z-50 sx:h-16', {
         'bg-black': mobileOpened,
       })}
     >
       <div className="mx-auto flex flex-row items-center justify-between h-full sx:hidden  px-9 sx:px-0 max-w-6xl overflow-hidden">
-        <div style={{width: 145, height: 58, overflow: 'visible'}}>
+        <div style={{width: 122, height: 49, overflow: 'visible'}}>
           <img
             referrerPolicy="no-referrer"
             src={logo}
@@ -41,18 +40,12 @@ function NavBar(props: NavibarProps) {
               boxSizing: 'content-box',
               padding: 0,
               margin: 0,
-              borderRight: '145px solid transparent',
-              filter: isDark ? 'drop-shadow(145px 0px 0px #48A33C)' : 'drop-shadow(145px 0px 0px white)',
               position: 'relative',
-              left: -145,
             }}
           />
         </div>
         <div
-          className={classNames('flex space-x-10 text-base text-opacity-50', {
-            'text-white': !isDark,
-            'text-main': isDark,
-          })}
+          className={classNames('flex space-x-10 text-base text-black')}
         >
           {navis.map((item, index) => {
             const isActive = props.activeIndex === index;
@@ -61,12 +54,16 @@ function NavBar(props: NavibarProps) {
                 key={index}
                 onClick={() => props.onChange(index)}
                 className={classNames({
-                  'text-white': isActive && !isDark,
-                  'text-main': isActive && isDark,
+                  'text-main': isActive,
                   'cursor-pointer': true,
+                  "font-bold": true,
+                  "relative": true
                 })}
               >
                 {item}
+                <i style={{bottom: -10}} className={classNames("absolute w-2/3 bg-main h-05 left-0 right-0 mx-auto", {
+                  'hidden': !isActive
+                })}></i>
               </span>
             );
           })}
@@ -75,8 +72,8 @@ function NavBar(props: NavibarProps) {
       <div className="hidden sx:block pl-4 pt-6 float-left" onClick={() => setMobileOpened(!mobileOpened)}>
         <div
           className={classNames('w-6 h-05 my-1 transition duration-300', {
-            'bg-main': isDark && !mobileOpened,
-            'bg-white': !isDark || mobileOpened,
+            // 'bg-main': isDark && !mobileOpened,
+            // 'bg-white': !isDark || mobileOpened,
             transform: mobileOpened,
             'rotate-45': mobileOpened,
             '-translate-x-2': mobileOpened,
@@ -85,15 +82,15 @@ function NavBar(props: NavibarProps) {
         ></div>
         <div
           className={classNames('w-6 h-05 my-1 transition duration-300', {
-            'bg-main': isDark && !mobileOpened,
-            'bg-white': !isDark || mobileOpened,
+            // 'bg-main': isDark && !mobileOpened,
+            // 'bg-white': !isDark || mobileOpened,
             'opacity-0': mobileOpened,
           })}
         ></div>
         <div
           className={classNames('w-6 h-05 my-1 transition duration-300', {
-            'bg-main': isDark && !mobileOpened,
-            'bg-white': !isDark || mobileOpened,
+            // 'bg-main': isDark && !mobileOpened,
+            // 'bg-white': !isDark || mobileOpened,
             transform: mobileOpened,
             '-rotate-45': mobileOpened,
             '-translate-x-2': mobileOpened,
