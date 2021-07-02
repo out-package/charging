@@ -29,7 +29,7 @@ function NavBar(props: NavibarProps) {
     <div>
     <div
       className={classNames('fixed w-screen h-32 z-50 sx:h-16 left-0 right-0 top-0', {
-        'bg-black': mobileOpened,
+        'bg-white': mobileOpened,
       })}
     >
       <div className="mx-auto flex flex-row items-center justify-between h-full sx:hidden  px-9 sx:px-0 max-w-6xl overflow-hidden">
@@ -72,9 +72,9 @@ function NavBar(props: NavibarProps) {
       </div>
       <div className="hidden sx:block pl-4 pt-6 float-left" onClick={() => setMobileOpened(!mobileOpened)}>
         <div
-          className={classNames('w-6 h-05 my-1 transition duration-300', {
+          className={classNames('w-6 h-05 my-1 bg-black duration-300', {
             // 'bg-main': isDark && !mobileOpened,
-            // 'bg-white': !isDark || mobileOpened,
+            'bg-black': mobileOpened,
             transform: mobileOpened,
             'rotate-45': mobileOpened,
             '-translate-x-2': mobileOpened,
@@ -82,14 +82,14 @@ function NavBar(props: NavibarProps) {
           })}
         ></div>
         <div
-          className={classNames('w-6 h-05 my-1 transition duration-300', {
+          className={classNames('w-6 h-05 my-1 bg-black duration-300', {
             // 'bg-main': isDark && !mobileOpened,
             // 'bg-white': !isDark || mobileOpened,
             'opacity-0': mobileOpened,
           })}
         ></div>
         <div
-          className={classNames('w-6 h-05 my-1 transition duration-300', {
+          className={classNames('w-6 h-05 my-1 bg-black duration-300', {
             // 'bg-main': isDark && !mobileOpened,
             // 'bg-white': !isDark || mobileOpened,
             transform: mobileOpened,
@@ -100,7 +100,7 @@ function NavBar(props: NavibarProps) {
         ></div>
       </div>
       <div
-        className={classNames('fixed left-0 right-0 bottom-0 top-0 mt-16 bg-black transition duration-300 transform', {
+        className={classNames('fixed left-0 right-0 bottom-0 top-0 mt-16 bg-white transition duration-300 transform', {
           'translate-y-0': mobileOpened,
           'translate-y-full': !mobileOpened,
         })}
@@ -113,7 +113,7 @@ function NavBar(props: NavibarProps) {
               props.onChange(index);
             }}
             className={classNames({
-              'text-white': true,
+              'text-black': true,
               'cursor-pointer': true,
               'text-opacity-60': true,
               'text-opacity-100': props.activeIndex === index,
@@ -121,7 +121,7 @@ function NavBar(props: NavibarProps) {
               'py-4': true,
               'mx-4': true,
               'border-b': true,
-              'border-gray-800': true,
+              'border-gray-300': true,
               'text-base': true,
             })}
           >

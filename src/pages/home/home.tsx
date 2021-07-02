@@ -1,10 +1,12 @@
 import About from '@/components/about/about';
 import Banner from '@/components/banner/banner';
+import FakeSwiper from '@/components/fake-swiper';
 import Footer from '@/components/footer/footer';
 import NavBar from '@/components/navbar/navbar';
 import Product from '@/components/product/product';
 import ProductBelow from '@/components/product/productBelow';
 import Swiper, {SwiperRef} from '@/components/swiper/swiper';
+import { os } from '@/utils';
 import React, {useRef, useState} from 'react';
 
 function Home() {
@@ -23,6 +25,12 @@ function Home() {
     showBelowArrow = false
   }
 
+  if (!os.isPc) {
+    showBelowArrow = false
+  }
+
+  const SwiperComponent = !os.isPc ? FakeSwiper : Swiper
+
   return (
     <div className="h-screen overflow-hidden">
       <NavBar
@@ -31,7 +39,7 @@ function Home() {
           ref.current?.getSwiper()?.slideTo(index === 2 ? 3 : index);
         }}
       />
-      <Swiper
+      <SwiperComponent
         ref={ref}
         speed={600}
         onSliceChange={(swiper, index) => {
@@ -59,7 +67,7 @@ function Home() {
             <Footer />
           </div>
         )}
-      </Swiper>
+      </SwiperComponent>
       {
         showBelowArrow ? <img src="../../assets/images/xiangxiashuangjiantou.png" className="fixed bottom-4 left-0 right-0 mx-auto z-50" alt="" /> : null
       }
