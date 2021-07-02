@@ -1,40 +1,43 @@
 import About from '@/components/about/about';
 import Banner from '@/components/banner/banner';
 import Footer from '@/components/footer/footer';
-import Form from '@/components/form/form';
 import NavBar from '@/components/navbar/navbar';
 import Product from '@/components/product/product';
+import ProductBelow from '@/components/product/productBelow';
 import Swiper, {SwiperRef} from '@/components/swiper/swiper';
-import {addClass, removeClass} from '@/libs/tiny-swiper/core/render/dom';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 
 function Home() {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [navBarIndex, setNavBarIndex] = useState(0);
-  const [height, setHeight] = useState(window.innerHeight);
+  const [height] = useState(window.innerHeight);
   const ref = useRef<SwiperRef>(null);
-
   const needSplitScreen = height < 730;
 
-  const darkActiveClass = 'bg-white';
-  const lightActiveClass = 'bg-main';
-
-  const darkClass = 'bg-white';
-  const lightClass = 'bg-black';
+  let showBelowArrow = true
+  if (needSplitScreen && currentIndex >= 4) {
+    showBelowArrow = false
+  }
+  
+  if (!needSplitScreen && currentIndex >= 3) {
+    showBelowArrow = false
+  }
 
   return (
     <div className="h-screen overflow-hidden">
       <NavBar
         activeIndex={navBarIndex}
         onChange={index => {
-          setNavBarIndex(index);
-          ref.current?.getSwiper()?.slideTo(index);
+          ref.current?.getSwiper()?.slideTo(index === 2 ? 3 : index);
         }}
       />
       <Swiper
         ref={ref}
         speed={600}
         onSliceChange={(swiper, index) => {
-          setNavBarIndex(index);
+          const _index = index >= 2 ? index - 1 : index;
+          setNavBarIndex(_index);
+          setCurrentIndex(index);
         }}
         lastForcesGetSize={!needSplitScreen}
         direction="vertical"
@@ -43,30 +46,11 @@ function Home() {
         slidesPerView={1}
         loop={false}
         mousewheel={{}}
-        pagination={{
-          el: '.main-swiper-pagination',
-          clickable: true,
-          bulletActiveClass: 'swiper-pagination-bullet-active w-5 rounded-lg shadow bg-white',
-          bulletClass: 'swiper-pagination-bullet bg-opacity-70 bg-gray-50 bg-white',
-        }}
-        onPaginationChange={(cur, prev, isActive, currentIndex) => {
-          const darkIndex = [0, 2];
-          if (needSplitScreen) {
-            darkIndex.push(4);
-          }
-
-          if (darkIndex.includes(currentIndex)) {
-            removeClass(prev, isActive ? lightActiveClass : lightClass);
-            addClass(cur, isActive ? darkActiveClass : darkClass);
-          } else {
-            removeClass(prev, isActive ? darkActiveClass : darkClass);
-            addClass(cur, isActive ? lightActiveClass : lightClass);
-          }
-        }}
       >
         <Banner />
         <Product />
-        <Form />
+        <ProductBelow />
+        
         {needSplitScreen && <About className="h-screen flex flex-col items-center justify-center" />}
         {needSplitScreen && <Footer className="sx:h-screen" />}
         {!needSplitScreen && (
@@ -76,7 +60,9 @@ function Home() {
           </div>
         )}
       </Swiper>
-      <div className="main-swiper-pagination fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col justify-center items-center space-y-2 sx:right-1 sx:px-0 z-10"></div>
+      {
+        showBelowArrow ? <img src="../../assets/images/xiangxiashuangjiantou.png" className="fixed bottom-4 left-0 right-0 mx-auto z-50" alt="" /> : null
+      }
     </div>
   );
 }

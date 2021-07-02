@@ -8,7 +8,7 @@ function Scan() {
   return (
     <div style={{background: '#E9E9E9'}} className="h-screen overflow-y-auto flex flex-col">
       <MobileNavbar />
-      <div className="flex text-xss text-black text-opacity-50 items-center justify-between pt-4 pb-2 flex-shrink-0 font-light">
+      {/* <div className="flex text-xss text-black text-opacity-50 items-center justify-between pt-4 pb-2 flex-shrink-0 font-light">
         <span className="flex-1 text-center px-2">Sạc pin miễn phí 10 phút</span>
         <div className="w-px h-4 bg-black bg-opacity-10"></div>
         <span className="flex-1 text-center px-2">Mạng lưới cửa hàng thuê trả thuận tiện</span>
@@ -59,7 +59,7 @@ function Scan() {
             <span className="text-main">“Điều khoản phục vụ sản phẩm”</span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

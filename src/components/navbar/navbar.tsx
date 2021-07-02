@@ -26,8 +26,9 @@ function NavBar(props: NavibarProps) {
 
 
   return (
+    <div>
     <div
-      className={classNames('fixed w-screen h-32 z-50 sx:h-16', {
+      className={classNames('fixed w-screen h-32 z-50 sx:h-16 left-0 right-0 top-0', {
         'bg-black': mobileOpened,
       })}
     >
@@ -129,7 +130,8 @@ function NavBar(props: NavibarProps) {
         ))}
       </div>
     </div>
-  );
+  
+    </div>);
 }
 
 export default NavBar;
