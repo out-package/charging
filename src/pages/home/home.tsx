@@ -6,7 +6,7 @@ import NavBar from '@/components/navbar/navbar';
 import Product from '@/components/product/product';
 import ProductBelow from '@/components/product/productBelow';
 import Swiper, {SwiperRef} from '@/components/swiper/swiper';
-import { os } from '@/utils';
+import {os} from '@/utils';
 import React, {useRef, useState} from 'react';
 
 function Home() {
@@ -16,20 +16,20 @@ function Home() {
   const ref = useRef<SwiperRef>(null);
   const needSplitScreen = height < 730;
 
-  let showBelowArrow = true
+  let showBelowArrow = true;
   if (needSplitScreen && currentIndex >= 4) {
-    showBelowArrow = false
+    showBelowArrow = false;
   }
-  
+
   if (!needSplitScreen && currentIndex >= 3) {
-    showBelowArrow = false
+    showBelowArrow = false;
   }
 
   if (!os.isPc) {
-    showBelowArrow = false
+    showBelowArrow = false;
   }
 
-  const SwiperComponent = !os.isPc ? FakeSwiper : Swiper
+  const SwiperComponent = !os.isPc ? FakeSwiper : Swiper;
 
   return (
     <div className="h-screen overflow-hidden">
@@ -56,9 +56,65 @@ function Home() {
         mousewheel={{}}
       >
         <Banner />
-        <Product />
-        <ProductBelow />
-        
+        <Product
+          title="Trạm sạc 8 ngăn"
+          picture={{src: '../../assets/images/cx.png'}}
+          params={[
+            {
+              label: 'Trọng lượng',
+              value: '4.7kg',
+            },
+            {
+              label: 'Kích thước',
+              value: '260*180*222mm',
+            },
+            {
+              label: 'Số lượng pin sạc',
+              value: '8',
+            },
+            {
+              label: 'Nguồn điện đầu vào',
+              value: 'DC12V5A',
+            },
+          ]}
+          belowTitle="Kiểm định chất lượng"
+          belowImages={[
+            {src: '../../assets/images/ce.png'},
+            {src: '../../assets/images/fcc.png'},
+            {src: '../../assets/images/cbpng.png'},
+            {src: '../../assets/images/rohs.png'},
+          ]}
+        />
+        <Product
+          title="Sạc dự phòng"
+          picture={{src: '../../assets/images/cx2.png'}}
+          params={[
+            {
+              label: 'Trọng lượng',
+              value: '142gr',
+            },
+            {
+              label: 'Kích thước',
+              value: '132*66*15mm',
+            },
+            {
+              label: 'Môi trường hoạt động',
+              value: '-25℃~55℃',
+            },
+            {
+              label: 'Số lần sạc',
+              value: '≥300',
+            },
+          ]}
+          belowTitle="Kiểm định chất lượng"
+          belowImages={[
+            {src: '../../assets/images/ce.png'},
+            {src: '../../assets/images/rohs.png'},
+            {src: '../../assets/images/rohs备份.png'},
+          ]}
+        />
+        {/* <ProductBelow /> */}
+
         {needSplitScreen && <About className="h-screen flex flex-col items-center justify-center" />}
         {needSplitScreen && <Footer className="sx:h-screen" />}
         {!needSplitScreen && (
@@ -68,9 +124,13 @@ function Home() {
           </div>
         )}
       </SwiperComponent>
-      {
-        showBelowArrow ? <img src="../../assets/images/xiangxiashuangjiantou.png" className="fixed bottom-4 left-0 right-0 mx-auto z-50" alt="" /> : null
-      }
+      {showBelowArrow ? (
+        <img
+          src="../../assets/images/xiangxiashuangjiantou.png"
+          className="fixed bottom-4 left-0 right-0 mx-auto z-50"
+          alt=""
+        />
+      ) : null}
     </div>
   );
 }
