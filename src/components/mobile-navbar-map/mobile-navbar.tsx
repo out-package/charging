@@ -11,11 +11,7 @@ function MobileNavbar() {
         </ul>
 
         <ul className="flex items-center">
-          <li>
-            <h1 className="pl-8 lg:pl-0 text-gray-700">
-              <img className="mx-auto w-20" src="../../assets/images/scan/scanLogo.png" />
-            </h1>
-          </li>
+          <li>EpinMap</li>
         </ul>
 
         <ul className="flex items-center">

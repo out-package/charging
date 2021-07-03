@@ -3,7 +3,7 @@ import MobileNavbar from '@/components/mobile-navbar/mobile-navbar';
 import classNames from 'classnames';
 import React, {useState} from 'react';
 
-function Scan() {
+function Map() {
   const [visibel, setVisibel] = useState(false);
 
   const fixedBottom = window.innerHeight < 710;
@@ -72,5 +72,5 @@ function Scan() {
   );
 }
 
-export default Scan;
-export const path = '/scan';
+export default Map;
+export const path = '/map';
