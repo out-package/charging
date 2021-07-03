@@ -35,6 +35,7 @@ module.exports = {
       },
       colors: {
         main: '#48A33C',
+        normal: '#333',
       },
       opacity: {
         '01': '0.01',
@@ -63,12 +64,17 @@ module.exports = {
         96: '24rem',
       },
       width: {
+        0.5: '0.125',
         72: '18rem',
         80: '20rem',
         96: '24rem',
       },
+      scale: {
+        70: '.7',
+      },
       screens: {
         mxl: '1440px',
+        ssx: {min: '319px', max: '479px'},
         sx: {min: '319px', max: '639px'},
         sm: {min: '640px', max: '767px'},
         md: {min: '768px', max: '1023px'},

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function MobileNavbar() {
+function MobileNavbarMap() {
   return (
-    <div className="flex flex-col h-12 flex-shrink-0">
-      <nav className="px-4 flex justify-between bg-transparent h-16" style={{background: '#E9E9E9'}}>
+    <div className="flex flex-col h-12 flex-shrink-0 relative z-50">
+      <nav className="px-4 flex justify-between bg-transparent h-16 bg-white">
         <ul className="flex items-center">
           <li className="h-6 w-6">
             <img className="mx-auto w-5" src="../../assets/images/scan/arrow.png" />
@@ -14,13 +14,14 @@ function MobileNavbar() {
           <li>EpinMap</li>
         </ul>
 
-        <ul className="flex items-center">
-          <li className="pr-6">{/*  */}</li>
-          <li className="h-10 w-10">{/*  */}</li>
+        <ul className="flex items-center justify-center">
+          <li>
+            <img src="../../assets/images/map/kefu.png" alt="" />
+          </li>
         </ul>
       </nav>
     </div>
   );
 }
 
-export default MobileNavbar;
+export default MobileNavbarMap;
