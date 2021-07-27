@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="18px" viewBox="0 0 21 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 6备份</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="扫描充电宝" transform="translate(-303.000000, -470.000000)">
+            <g id="编组-8" transform="translate(15.000000, 469.500000)">
+                <g id="编组-6备份" transform="translate(288.000000, 0.500000)">
+                    <rect id="矩形" stroke="#333333" stroke-width="1.33333333" x="2.66666667" y="0.666666667" width="13.3333333" height="14" rx="2"></rect>
+                    <path d="M2,13.3333333 L16.6666667,13.3333333 C17.7712362,13.3333333 18.6666667,14.2287638 18.6666667,15.3333333 L18.6666667,17.3333333 L18.6666667,17.3333333 L0,17.3333333 L0,15.3333333 C-5.7935996e-16,14.2287638 0.8954305,13.3333333 2,13.3333333 Z" id="矩形" fill="#333333"></path>
+                    <circle id="椭圆形-2" stroke="#FFFFFF" stroke-width="0.666666667" fill="#333333" cx="16.6666667" cy="14" r="3.66666667"></circle>
+                    <path d="" id="Fill-3" stroke="#FFFFFF" stroke-width="0.666666667" fill="#333333"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

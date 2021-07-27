@@ -17,6 +17,11 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      margin: {
+        0.5: '0.125rem',
+        1: '0.25rem',
+        1.5: '0.3rem',
+      },
       inset: {
         1: '0.25rem',
         1.5: '0.375rem',
@@ -25,6 +30,7 @@ module.exports = {
         3: '0.75rem',
         3.5: '0.875rem',
         4: '1rem',
+        1340: '1340px',
         '1/2': '50%',
         '1/3': '33.333333%',
         '2/3': '66.666667%',
@@ -64,17 +70,18 @@ module.exports = {
         96: '24rem',
       },
       width: {
-        0.5: '0.125',
+        0.5: '0.125rem',
         72: '18rem',
         80: '20rem',
         96: '24rem',
+        '564px': '564px',
       },
       scale: {
-        70: '.7',
+        70: '.6',
       },
       screens: {
         mxl: '1440px',
-        ssx: {min: '319px', max: '479px'},
+        ssx: {min: '319px', max: '374px'},
         sx: {min: '319px', max: '639px'},
         sm: {min: '640px', max: '767px'},
         md: {min: '768px', max: '1023px'},

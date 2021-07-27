@@ -2,10 +2,12 @@ import Actionsheet from '@/components/actionsheet';
 import MobileNavbarMap from '@/components/mobile-navbar-map/mobile-navbar';
 import GoogleMapReact from 'google-map-react';
 import classNames from 'classnames';
-import React, {useRef, useState} from 'react';
-import {CoordinateMarket, Market} from '@/components/market';
+import React, {useEffect, useRef, useState} from 'react';
+import {CoordinateMarket, CurrentPositionMarket, Market} from '@/components/market';
 import mockData from './mockdata';
 import AlloyFinger from '@/components/alloy-finger';
+import MapItem from '@/components/map-item';
+import {getLatLng, openApp as openGoogleMapApp} from '@/utils';
 
 function Map() {
   const defaultProps = {
@@ -16,48 +18,68 @@ function Map() {
     zoom: 11,
   };
 
+  const [currentCenter, setCurrentCenter] = useState({
+    lat: 10.99835602,
+    lng: 77.01502627,
+  });
+  const [position, setPosition] = useState(false);
   const [active, setActive] = useState('');
   const [showAll, setShowAll] = useState(false);
   const [currentSelected, setCurrentSelected] = useState<typeof mockData[number] | null>(null);
   const ref = useRef<any>(null);
 
-  const total = currentSelected?.data.length || 0;
-  const showLength = showAll ? total : total === 1 ? 1 : 2;
+  useEffect(() => {
+    // TODO: mock 定位操作
+    setTimeout(() => {
+      setPosition(true);
 
-  const translateY = !currentSelected ? '100%' : 0;
+      // TODO: 请切换到正常的
+      ref.current?.map_.setCenter(defaultProps.center);
+      setCurrentCenter(defaultProps.center);
+    }, 5000);
+
+    // getLatLng().then(res => {
+    //   setPosition(true);
+
+    //   // TODO: 请切换到正常的
+    //   // ref.current?.map_.setCenter(defaultProps.center);
+
+    //   // TODO: 获取当前经纬度
+    //   console.log(res.coords.latitude, res.coords.longitude, res.coords);
+    // });
+  }, []);
 
   return (
     <div style={{background: '#E9E9E9'}} className="h-screen overflow-y-auto flex flex-col overflow-x-hidden">
-      <MobileNavbarMap />
+      <MobileNavbarMap onClick={() => setShowAll(false)} />
       <div className="flex flex-col flex-1 overflow-hidden">
         <div className="flex-1 flex items-center justify-center relative">
-          <img
-            src="../../assets/images/map/ic_Location.png"
-            alt=""
-            className="fixed right-2 bottom-2 z-50"
-            onClick={() => {
-              setActive('');
-              ref.current?.map_.setCenter(defaultProps.center);
-            }}
-          />
           <GoogleMapReact
             ref={ref}
             bootstrapURLKeys={{key: 'AIzaSyCi_UGl2eABWh5ZlVdRhUFm1DNa2GacYfw'}}
-            defaultCenter={defaultProps.center}
+            defaultCenter={{
+              lat: 11.99835602,
+              lng: 78.01502627,
+            }}
             defaultZoom={defaultProps.zoom}
             options={{
               fullscreenControl: false,
               zoomControl: false,
               keyboardShortcuts: false,
             }}
+            onClick={() => {
+              setShowAll(false);
+            }}
           >
-            {!active ? <CoordinateMarket lat={10.99835602} lng={77.01502627} /> : null}
+            {position ? (
+              <CurrentPositionMarket lat={currentCenter.lat} lng={currentCenter.lng} hideRocker={!!currentSelected} />
+            ) : null}
             {mockData.map(item => (
               <Market
                 selected={active === item.id}
                 lat={item.lat}
                 lng={item.lng}
-                describe={item.data[0]}
+                describe={item}
                 onClick={() => {
                   setActive(item.id);
                   setCurrentSelected(item);
@@ -69,8 +91,8 @@ function Map() {
       </div>
       <div
         className={classNames({
-          'overflow-y-auto': true,
-          'overflow-x-hidden': true,
+          'translate-y-0': true,
+          'overflow-visible': true,
           'transition-all': true,
           'duration-300': true,
           transform: true,
@@ -82,9 +104,19 @@ function Map() {
           'w-full': true,
           'z-50': true,
         })}
-        style={{backgroundColor: '#fafafa', transform: `translateY(${translateY})`}}
+        style={{backgroundColor: '#fafafa'}}
       >
-        {/*  */}
+        <img
+          src="../../assets/images/map/ic_Location.svg"
+          alt=""
+          className="absolute right-2 z-50"
+          style={{top: -70}}
+          onClick={() => {
+            setActive('');
+            setShowAll(false);
+            ref.current?.map_.setCenter(defaultProps.center);
+          }}
+        />
         <AlloyFinger
           onSwipe={(e: any) => {
             const direction = e.direction.toLowerCase();
@@ -99,40 +131,47 @@ function Map() {
             }
           }}
         >
-          <div className="py-3 ssx:py-2 flex items-center justify-center">
-            <img src="../../assets/images/map/plus.png" alt="" onClick={() => setShowAll(!showAll)} />
-          </div>
+          <>
+            <div className="py-1 pt-3 flex items-center justify-center">
+              <img src="../../assets/images/map/plus.svg" alt="" onClick={() => setShowAll(!showAll)} />
+            </div>
+            <div className="py-2 text-center text-black text-opacity-50">Cửa hàng gần</div>
+          </>
         </AlloyFinger>
-        <div className="pt-2 pb-4 ssx:py-2 text-center text-black text-opacity-50">{currentSelected?.title}</div>
         <div
           className={classNames('overflow-y-auto transition-all duration-300', {
-            'h-80': !showAll,
-            'ssx:h-56': !showAll,
+            'overflow-y-auto': true,
+            'overflow-x-hidden': true,
+            'h-32': !showAll,
+            'ssx:h-24': !showAll,
+            'h-96': showAll,
+            'ssx:h-72': showAll,
           })}
-          style={{height: showAll ? '80vh' : undefined}}
         >
-          {Array.from({length: showLength}).map((_, i) => {
-            const current = currentSelected?.data[i];
-            return (
-              <div className="p-5 ssx:p-2 text-black mx-4 shadow mb-3 rounded-xl">
-                <div className="flex items-center pb-2 ssx:pb-1">
-                  <h3 className="text-black text-base ssx:text-sm">{current?.title}</h3>
-                  <span className="text-xss text-white px-2 py-1 bg-main rounded-full ml-2">{current?.type}</span>
-                </div>
-                <p className="pb-2 ssx:pb-1 text-black text-opacity-50 text-sm ssx:text-xs">
-                  Thời gian làm việc：{current?.businessTime}
-                </p>
-                <p className="pb-2 ssx:pb-1 text-black text-opacity-50 text-sm ssx:text-xs">{current?.address}</p>
-              </div>
-            );
-          })}
+          <MapItem
+            current={currentSelected || mockData[0]}
+            onClick={() => {
+              // openGoogle 可以输入门牌号等
+              openGoogleMapApp(`${(currentSelected || mockData[0]).lat},${(currentSelected || mockData[0]).lng}`);
+            }}
+          />
+          {!showAll
+            ? null
+            : mockData
+                .filter(v => (currentSelected || mockData[0]).id !== v.id)
+                .map(item => (
+                  <MapItem
+                    current={item}
+                    onClick={() => {
+                      openGoogleMapApp(`${item.lat},${item.lng}`);
+                    }}
+                  />
+                ))}
         </div>
       </div>
     </div>
   );
 }
-
-//  translate-y-full
 
 export default Map;
 export const path = '/map';

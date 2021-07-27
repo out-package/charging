@@ -25,11 +25,11 @@ function Home() {
     showBelowArrow = false;
   }
 
-  if (!os.isPc) {
-    showBelowArrow = false;
-  }
+  // if (!os.isPc) {
+  //   showBelowArrow = false;
+  // }
 
-  const SwiperComponent = !os.isPc ? FakeSwiper : Swiper;
+  const SwiperComponent = Swiper;
 
   return (
     <div className="h-screen overflow-hidden">
@@ -57,6 +57,7 @@ function Home() {
       >
         <Banner />
         <Product
+          id="product"
           title="Trạm sạc 8 ngăn"
           picture={{src: '../../assets/images/cx.png'}}
           params={[
@@ -113,22 +114,23 @@ function Home() {
             {src: '../../assets/images/rohs备份.png'},
           ]}
         />
-        {/* <ProductBelow /> */}
-
         {needSplitScreen && <About className="h-screen flex flex-col items-center justify-center" />}
         {needSplitScreen && <Footer className="sx:h-screen" />}
         {!needSplitScreen && (
           <div id="last-screen">
-            <About className="sx:pt-20" />
+            <About />
             <Footer />
           </div>
         )}
       </SwiperComponent>
       {showBelowArrow ? (
         <img
-          src="../../assets/images/xiangxiashuangjiantou.png"
-          className="fixed bottom-4 left-0 right-0 mx-auto z-50"
+          src="../../assets/images/xiangxiashuangjiantou.svg"
+          className="fixed bottom-4 left-0 right-0 mx-auto z-50 cursor-pointer sx:w-4"
           alt=""
+          onClick={() => {
+            ref.current?.getSwiper()?.slideTo(currentIndex + 1);
+          }}
         />
       ) : null}
     </div>

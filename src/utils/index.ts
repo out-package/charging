@@ -19,5 +19,24 @@ export const os = (function () {
     isPhone: isPhone,
     isAndroid: isAndroid,
     isPc: isPc,
+    isSmallScreen: window.innerHeight < 570,
   };
 })();
+
+export function getLatLng(): Promise<GeolocationPosition> {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, {
+      enableHighAccuracy: true,
+      maximumAge: 3000000,
+      timeout: 20 * 1000,
+    });
+  });
+}
+
+export const openApp = (to: string) => {
+  if (os.isPhone) {
+    window.location.href = `comgooglemaps://?daddr=${to}`;
+  } else if (os.isAndroid) {
+    window.location.href = `google.navigation:q=${to}`;
+  }
+};

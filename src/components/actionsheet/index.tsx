@@ -31,7 +31,7 @@ const Actionsheet = (props: Props) => {
         )}
       >
         <div
-          className="h-16 bg-white rounded-t-3xl flex items-center justify-center text-black border-gray-100 border-b border-solid"
+          className="h-16 bg-white rounded-t-3xl flex items-center justify-center text-black"
           style={{color: '#8A8A8A'}}
         >
           Vui lòng lựa chọn phương thức thanh toán
@@ -39,21 +39,24 @@ const Actionsheet = (props: Props) => {
         <div className="transform">
           {menus.map((text: any, i: number) => {
             return (
-              <div
-                key={i}
-                className="relative h-16 flex items-center justify-center text-black bg-white border-gray-100 border-b border-solid"
-                data-id={i}
-                onClick={handleClick}
-              >
-                {text}
-              </div>
+              <>
+                <div className="h-px bg-gray-200"></div>
+                <div
+                  key={i}
+                  className="relative h-16 flex items-center justify-center text-black bg-white"
+                  data-id={i}
+                  onClick={handleClick}
+                >
+                  {text}
+                </div>
+              </>
             );
           })}
         </div>
-
-        <div className="border-solid border-t-8 border-gray-100">
+        <div className="h-2 bg-gray-200"></div>
+        <div>
           <div
-            className="h-16 bg-white flex items-center justify-center text-black border-solid"
+            className="h-16 bg-white flex items-center justify-center text-black"
             onClick={onRequestClose}
             style={{color: '#2869BB'}}
           >

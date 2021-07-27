@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="41px" viewBox="0 0 27 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 2</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="扫描地图" transform="translate(-44.000000, -227.000000)">
+            <g id="编组-6" transform="translate(0.000000, -6.000000)">
+                <g transform="translate(33.000000, 233.000000)">
+                    <g id="编组-2" transform="translate(11.789474, 0.000000)">
+                        <rect id="矩形" fill="#181918" x="10.9473684" y="22.3157895" width="4.21052632" height="18" rx="1.68421053"></rect>
+                        <circle id="椭圆形" fill="#181918" cx="12.6315789" cy="12.6315789" r="12.6315789"></circle>
+                        <circle id="椭圆形" fill="#48A33C" cx="12.6315789" cy="12.6315789" r="5.05263158"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

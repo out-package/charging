@@ -1,7 +1,7 @@
 import {os} from '@/utils';
 import classNames from 'classnames';
 import React, {useState} from 'react';
-import logo from '@/assets/images/logo.png';
+import logo from '@/assets/images/logo.svg';
 
 interface NavibarProps {
   activeIndex: number;
@@ -12,7 +12,7 @@ const navis = ['Trang chủ', 'Sản phẩm', 'Hợp tác'];
 
 function NavBar(props: NavibarProps) {
   const [mobileOpened, setMobileOpened] = useState(false);
-  const dark = [1];
+  const dark = [];
 
   // 移动端
   const isDefectIndex =
@@ -24,23 +24,22 @@ function NavBar(props: NavibarProps) {
     dark.push(3);
   }
 
+  console.log('props.activeIndex', props.activeIndex, dark);
+
+  const isDark = dark.includes(props.activeIndex);
+
   return (
     <div>
-      <div className={classNames('fixed w-screen h-32 z-50 sx:h-16 left-0 right-0 top-0 bg-white')}>
-        <div className="mx-auto flex flex-row items-center justify-between h-full sx:hidden  px-9 sx:px-0 max-w-6xl overflow-hidden">
-          <div style={{width: 122, height: 49, overflow: 'visible'}}>
-            <img
-              referrerPolicy="no-referrer"
-              src={logo}
-              style={{
-                boxSizing: 'content-box',
-                padding: 0,
-                margin: 0,
-                position: 'relative',
-              }}
-            />
+      <div
+        className={classNames('fixed w-screen h-32 z-50 sx:h-16 left-0 right-0 top-0', {
+          'bg-white': mobileOpened || os.isPc,
+        })}
+      >
+        <div className="mx-auto flex flex-row items-center justify-between h-full sx:hidden  px-9 sx:px-0 max-w-screen-mxl overflow-hidden">
+          <div style={{width: 131, height: 53, overflow: 'visible'}}>
+            <img referrerPolicy="no-referrer" src={logo} className="object-fill" />
           </div>
-          <div className={classNames('flex space-x-10 text-base text-black')}>
+          <div className={classNames('flex space-x-16 text-base text-black')}>
             {navis.map((item, index) => {
               const isActive = props.activeIndex === index;
               return (
@@ -49,8 +48,9 @@ function NavBar(props: NavibarProps) {
                   onClick={() => props.onChange(index)}
                   className={classNames({
                     'text-main': isActive,
+                    'text-normal': !isActive,
                     'cursor-pointer': true,
-                    'font-bold': true,
+                    'text-lg': true,
                     relative: true,
                   })}
                 >
@@ -66,11 +66,11 @@ function NavBar(props: NavibarProps) {
             })}
           </div>
         </div>
-        <div className="hidden sx:block pl-4 pt-6 float-left" onClick={() => setMobileOpened(!mobileOpened)}>
+        <div className="hidden sx:block pl-5 pt-6 float-left" onClick={() => setMobileOpened(!mobileOpened)}>
           <div
-            className={classNames('w-6 h-05 my-1 bg-black duration-300', {
-              // 'bg-main': isDark && !mobileOpened,
-              'bg-black': mobileOpened,
+            className={classNames(' w-5 h-05 my-1 duration-300 rounded-full', {
+              'bg-white': isDark && !mobileOpened,
+              'bg-black': !isDark || mobileOpened,
               transform: mobileOpened,
               'rotate-45': mobileOpened,
               '-translate-x-2': mobileOpened,
@@ -78,15 +78,16 @@ function NavBar(props: NavibarProps) {
             })}
           ></div>
           <div
-            className={classNames('w-6 h-05 my-1 bg-black duration-300', {
-              // 'bg-main': isDark && !mobileOpened,
-              // 'bg-white': !isDark || mobileOpened,
+            className={classNames(' w-5 h-05 my-1  duration-300 rounded-full', {
+              'bg-white': isDark && !mobileOpened,
+              'bg-black': !isDark || mobileOpened,
               'opacity-0': mobileOpened,
             })}
           ></div>
           <div
-            className={classNames('w-6 h-05 my-1 bg-black duration-300', {
-              // 'bg-main': isDark && !mobileOpened,
+            className={classNames(' w-5 h-05 my-1 duration-300 rounded-full', {
+              'bg-white': isDark && !mobileOpened,
+              'bg-black': !isDark || mobileOpened,
               // 'bg-white': !isDark || mobileOpened,
               transform: mobileOpened,
               '-rotate-45': mobileOpened,
